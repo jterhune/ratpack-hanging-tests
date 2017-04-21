@@ -1,0 +1,33 @@
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath "io.ratpack:ratpack-gradle:1.4.5"
+    }
+}
+
+
+apply plugin: "io.ratpack.ratpack-groovy"
+
+repositories {
+    jcenter()
+    mavenCentral()
+    maven { url "https://dl.bintray.com/smartthingsoss/maven" }
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.4.10'
+    compile 'com.datastax.cassandra:cassandra-driver-core:3.1.0:shaded'
+
+    testCompile "org.spockframework:spock-core:1.0-groovy-2.4"
+    testCompile 'org.apache.cassandra:cassandra-all:3.0.13'
+    testCompile('org.cassandraunit:cassandra-unit:3.1.3.2') {
+        exclude module: 'cassandra-all'
+        exclude module: 'netty-handler'
+    }
+    testCompile ratpack.dependency("test")
+    testCompile ratpack.dependency("remote")
+    testCompile ratpack.dependency("remote-test")
+}

@@ -1,0 +1,21 @@
+cluster_name: 'Test Cluster'
+commitlog_sync: periodic
+commitlog_sync_period_in_ms: 10000
+partitioner: org.apache.cassandra.dht.Murmur3Partitioner
+endpoint_snitch: SimpleSnitch
+commitlog_directory: build/cassandra-unit/commitlogs
+hints_directory: build/cassandra-unit/hints
+saved_caches_directory: build/cassandra-unit/saved-caches
+data_file_directories:
+  - build/cassandra-unit/data0
+listen_address: "127.0.0.1"
+seed_provider:
+- class_name: org.apache.cassandra.locator.SimpleSeedProvider
+  parameters:
+  - seeds: "127.0.0.1"
+start_native_transport: true
+start_rpc: false
+rpc_address: 127.0.0.1
+rpc_port: 9171
+rpc_server_type: sync
+storage_port: 7010

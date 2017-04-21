@@ -1,0 +1,15 @@
+<configuration>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+        <encoder>
+            <pattern>time=%d{HH:mm:ss.SSS}, loggingId=%X{loggingId}, level=%-5level, %thread{20} logger=%logger{36}, message=%msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- this produces nasty exceptions at warn level but can safely be ignored locally -->
+    <logger name="com.datastax.driver.core.policies.EC2MultiRegionAddressTranslator" level="ERROR"/>
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>
